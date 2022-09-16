@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-server-ingress
+  annotations:
+    alb.ingress.kubernets.io/sheme: internet-facing
+    alb.ingress.kubernets.io/target-type: ip
+spec:
+  ingressClassname: alb
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-server
+                port:
+                  number: 3000
