@@ -1,12 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import os from 'os';
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
 app.get('/', (req, res) => {
-    res.send(`Hello World! from ${process.pid}`);
+    res.send(`Hello World! from hostname -> ${os.hostname()} ${process.pid}`);
 });
 
 app.listen(port, () => {
