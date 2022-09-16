@@ -1,0 +1,13 @@
+services:
+  app1:
+    build:
+      context: .
+      dockerfile: app-1/Dockerfile
+      target: development
+    command: npm run start
+    volumes:
+      - .:app-1
+      - app-1/node_modules
+    ports:
+      - "80:3000"
+
