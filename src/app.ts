@@ -7,6 +7,7 @@ const app = express();
 const port = process.env.PORT;
 
 app.get('/', (req, res) => {
+    console.log(os.hostname())
     res.send(`Hello World! from hostname -> ${os.hostname()} ${process.pid}`);
 });
 
