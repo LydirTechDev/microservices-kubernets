@@ -1,17 +1,12 @@
 import express from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config();
 const app = express();
-const port = 3000;
-
-const memoryLeakAllocations = [];
-
-const field = "heapUsed";
-const allocationStep = 10000 * 1024; // 10MB
-
-const TIME_INTERVAL_IN_MSEC = 40;
-let gbRounded
+const port = process.env.PORT;
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send(`Hello World! from ${process.pid}`);
 });
 
 app.listen(port, () => {

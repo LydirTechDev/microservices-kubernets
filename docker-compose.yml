@@ -1,13 +1,17 @@
+version: "3"
+
 services:
-  app1:
+  api-server:
     build:
       context: .
-      dockerfile: app-1/Dockerfile
-      target: development
-    command: npm run start
-    volumes:
-      - .:app-1
-      - app-1/node_modules
+      dockerfile: Dockerfile
+    container_name: api-server
+    restart: unless-stopped
+    networks:
+      - app-network
     ports:
-      - "80:3000"
+      - "3000:3000"
 
+networks:
+  app-network:
+    driver: bridge
