@@ -3,10 +3,12 @@ kind: Ingress
 metadata:
   name: api-server-ingress
   annotations:
-    alb.ingress.kubernets.io/sheme: internet-facing
-    alb.ingress.kubernets.io/target-type: ip
+    # alb.ingress.kubernets.io/sheme: internet-facing
+    # alb.ingress.kubernets.io/target-type: ip
+    haproxy.org/path-rewrite: "/"
+    kubernetes.io/ingress.class: haproxy
 spec:
-  ingressClassname: alb
+  # ingressClassname: alb
   rules:
     - http:
         paths:
